@@ -1,0 +1,17 @@
+$green: #3db46d;
+$red: #eb5757;
+$grey: #bdbdbd;
+$dark-grey: #4f4f4f;
+
+@mixin text-sm {
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+@mixin text-m {
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+}
+@mixin text-lg {
+  font-size: 2.4rem;
+  line-height: 3.3rem;
+}

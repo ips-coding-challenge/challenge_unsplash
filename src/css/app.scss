@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css");
+@import "_variables.scss";
+@import "_base.scss";
+@import "_header.scss";
+@import "_login.scss";
+@import "_modal.scss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 10px;
+}
+
+.container {
+  max-width: 1240px;
+  padding: 18px 12px;
+  margin: 0 auto;
+
+  @media screen and(min-width: 992px) {
+    padding: 32px 100px;
+  }
+}
+
+.loading {
+  font-size: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+// Fade animation
+.fade-enter .page {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active .page {
+  opacity: 1;
+  transition: opacity 450ms ease-in;
+}

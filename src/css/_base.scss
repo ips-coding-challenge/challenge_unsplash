@@ -1,0 +1,104 @@
+input {
+  font-family: "Noto Sans", sans-serif;
+  border: none;
+  height: 100%;
+  width: 100%;
+  outline: none;
+
+  &::placeholder {
+    @include text-m;
+    color: $grey;
+  }
+}
+
+.input-group {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  border: 1px solid $grey;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 300px;
+  padding: 18px;
+
+  i {
+    font-size: 2rem;
+    color: $grey;
+    margin-right: 20px;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 300px;
+  }
+}
+
+.btn {
+  font-family: "Noto Sans", sans-serif;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  font-weight: bold;
+  outline: none;
+  padding: 18px 26px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  @media screen and (max-width: 400px) {
+    padding: 8px 12px;
+  }
+}
+
+.btn-default {
+  background-color: $grey;
+  color: black;
+
+  &:hover {
+    background-color: adjust-color($grey, $lightness: -5%);
+  }
+}
+
+.btn-light {
+  background: transparent;
+  box-shadow: none;
+  color: $grey;
+  transition: color 0.2s;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.btn-green {
+  @include text-m;
+  color: white;
+  background-color: $green;
+
+  &:hover {
+    background-color: adjust-color($green, $lightness: -5%);
+  }
+}
+
+.form-group {
+  width: 100%;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    @include text-m;
+    margin-bottom: 10px;
+    color: $dark-grey;
+  }
+
+  input {
+    border: 1px solid $grey;
+    height: 55px;
+    border-radius: 12px;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    padding: 0 18px;
+  }
+}
+
+.align-self-end {
+  align-self: flex-end;
+}
