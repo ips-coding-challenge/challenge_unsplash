@@ -7,10 +7,19 @@
     display: flex;
     align-items: center;
     margin-right: 12px;
+    flex: auto;
   }
 
   &__logo {
     display: none;
+  }
+
+  &__search {
+    width: 100%;
+
+    .input-group {
+      max-width: none;
+    }
   }
 
   @media screen and (min-width: 767px) {

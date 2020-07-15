@@ -6,6 +6,9 @@ const initialState = {
   loading: true,
   showAddModal: false,
   showDeleteModal: false,
+  showImageModal: false,
+  query: "",
+  resetSearch: false,
 };
 
 const store = createContext(initialState);
@@ -23,6 +26,12 @@ const StateProvider = ({ children }) => {
         return { ...state, showAddModal: action.value };
       case "SET_SHOW_DELETE_MODAL":
         return { ...state, showDeleteModal: action.value };
+      case "SET_SHOW_IMAGE_MODAL":
+        return { ...state, showImageModal: action.value };
+      case "SET_QUERY":
+        return { ...state, query: action.value };
+      case "SET_RESET_SEARCH":
+        return { ...state, resetSearch: true };
       default:
         throw new Error("This action doest not exists");
     }

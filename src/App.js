@@ -5,6 +5,7 @@ import GalleryPage from "./pages/GalleryPage";
 import { store } from "./store/store";
 import { auth } from "./firebase";
 import "./css/app.scss";
+import ImagePage from "./pages/ImagePage";
 
 function App() {
   const globalState = useContext(store);

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import { store } from "../store/store";
 
-const Modal = ({ title, content, actions }) => {
+const Modal = ({ title, content, actions, show }) => {
   const globalState = useContext(store);
   const { state, dispatch } = globalState;
   const modalRef = useRef(null);
@@ -21,7 +21,7 @@ const Modal = ({ title, content, actions }) => {
   }, [modalRef]);
 
   return (
-    <div className={`modal ${state.showAddModal ? "show" : ""}`}>
+    <div className={`modal ${show ? "show" : ""}`}>
       <div ref={modalRef} className="modal-body">
         <div className="modal-body__title">{title}</div>
         <div className="modal-body__content">{content}</div>

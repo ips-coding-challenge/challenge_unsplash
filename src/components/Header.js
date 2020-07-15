@@ -1,14 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { store } from "../store/store";
 
 const Header = ({ addModal }) => {
   const globalState = useContext(store);
   const { state, dispatch } = globalState;
+  const [query, setQuery] = useState("");
+
+  const putFocus = () => {
+    const input = document.querySelector(".input--search");
+    input.focus();
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
 
     dispatch({ type: "SET_SHOW_ADD_MODAL", value: true });
+  };
+
+  const search = (e) => {
+    if (e.key === "Enter") {
+      dispatch({ type: "SET_QUERY", value: query });
+    }
   };
 
   return (
@@ -19,10 +31,17 @@ const Header = ({ addModal }) => {
           alt="logo"
           className="header__logo"
         />
-        <div className="header__search">
+        <div className="header__search" onClick={putFocus}>
           <div className="input-group">
             <i className="zmdi zmdi-search"></i>
-            <input type="text" placeholder="Search" />
+            <input
+              className="input--search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              type="text"
+              placeholder="Search"
+              onKeyDown={search}
+            />
           </div>
         </div>
       </div>
