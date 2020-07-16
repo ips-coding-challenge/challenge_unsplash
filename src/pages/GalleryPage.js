@@ -11,7 +11,7 @@ import ModalImage from "../components/ModalImage";
 const GalleryPage = () => {
   const globalState = useContext(store);
   const { state, dispatch } = globalState;
-  const [showAddModal, setShowAddModal] = useState(false);
+  // const [showModal, setShowAddModal] = useState(false);
   const [pictures, setPictures] = useState([]);
   const [firstLoad, setFirstLoad] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -76,16 +76,31 @@ const GalleryPage = () => {
     }
   }, [pictures]);
 
+  useEffect(() => {
+    if (state.showModal.show) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+  }, [state.showModal.show]);
+
   const handleClickImage = (image) => {
-    dispatch({ type: "SET_SHOW_IMAGE_MODAL", value: true });
+    dispatch({ type: "SET_SHOW_MODAL", value: { name: "image", show: true } });
     setSelectedImage(image);
   };
 
   return (
     <div>
-      <Header addModal={setShowAddModal} />
-      <ModalAdd />
-      <ModalImage image={selectedImage} show={state.showImageModal} />
+      <Header
+        addModal={() =>
+          dispatch({
+            type: "SET_SHOW_MODAL",
+            value: { name: "add", show: true },
+          })
+        }
+      />
+      {state.showModal.name === "add" && <ModalAdd />}
+      {state.showModal.name === "image" && <ModalImage image={selectedImage} />}
       {pictures.length > 0 && (
         <div className="grid">
           <div className="grid-sizer"></div>

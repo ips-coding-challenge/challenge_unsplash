@@ -14,7 +14,7 @@ const Header = ({ addModal }) => {
   const handleClick = (e) => {
     e.preventDefault();
 
-    dispatch({ type: "SET_SHOW_ADD_MODAL", value: true });
+    dispatch({ type: "SET_SHOW_MODAL", value: { name: "add", show: true } });
   };
 
   const search = (e) => {

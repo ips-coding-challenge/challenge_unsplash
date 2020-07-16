@@ -78,6 +78,16 @@ input {
   }
 }
 
+.btn-red {
+  @include text-m;
+  color: white;
+  background-color: $red;
+
+  &:hover {
+    background-color: adjust-color($red, $lightness: -5%);
+  }
+}
+
 .form-group {
   width: 100%;
   padding: 18px;

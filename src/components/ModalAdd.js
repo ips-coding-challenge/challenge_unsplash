@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import firebase from "firebase/app";
 import Modal from "./Modal";
 import { useContext } from "react";
@@ -10,10 +10,16 @@ export default function ModalAdd() {
   const { state, dispatch } = globalState;
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
+  const [error, setError] = useState(null);
+  const modalRef = useRef(null);
 
   const addImage = async () => {
+    setError(null);
     const image = firestore.collection("images").doc();
-    if (!name && !url) return;
+    if (!name && !url) {
+      setError("Name and Url are required");
+      return;
+    }
     try {
       const newImage = await image.set({
         id: image.id,
@@ -23,20 +29,21 @@ export default function ModalAdd() {
         created_at: firebase.firestore.FieldValue.serverTimestamp(),
       });
       console.log(`New image`, newImage);
-      dispatch({ type: "SET_SHOW_ADD_MODAL", value: false });
+      dispatch({ type: "SET_SHOW_MODAL", value: { name: null, show: false } });
       setName("");
       setUrl("");
     } catch (e) {
       console.log(`Error`, e);
+      setError(e.message);
     }
   };
 
   const close = () => {
-    dispatch({ type: "SET_SHOW_ADD_MODAL", value: false });
+    dispatch({ type: "SET_SHOW_MODAL", value: { name: null, show: false } });
   };
 
-  const content = () => (
-    <div>
+  const content = (
+    <>
       <div className="form-group">
         <label htmlFor="label">Label</label>
         <input
@@ -59,27 +66,30 @@ export default function ModalAdd() {
           required
         />
       </div>
-    </div>
+      {error && (
+        <div className="error" style={{ color: "red" }}>
+          {error}
+        </div>
+      )}
+    </>
   );
-  const actions = () => {
-    return (
-      <div>
-        <button className="btn btn-light" onClick={close}>
-          Cancel
-        </button>
-        <button className="btn btn-green" onClick={addImage}>
-          Submit
-        </button>
-      </div>
-    );
-  };
+  const actions = (
+    <>
+      <button className="btn btn-light" onClick={close}>
+        Cancel
+      </button>
+      <button className="btn btn-green" onClick={addImage}>
+        Submit
+      </button>
+    </>
+  );
 
   return (
     <Modal
-      show={state.showAddModal}
+      show={state.showModal.name === "add" && state.showModal.show}
       title="Add a new photo"
-      content={content()}
-      actions={actions()}
+      content={content}
+      actions={actions}
     />
   );
 }

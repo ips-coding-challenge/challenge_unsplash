@@ -4,6 +4,7 @@ const initialState = {
   user: null,
   photos: [],
   loading: true,
+  showModal: { name: null, show: false },
   showAddModal: false,
   showDeleteModal: false,
   showImageModal: false,
@@ -21,13 +22,14 @@ const StateProvider = ({ children }) => {
         return { ...state, user: action.value };
       case "SET_LOADING":
         return { ...state, loading: action.value };
-
-      case "SET_SHOW_ADD_MODAL":
-        return { ...state, showAddModal: action.value };
-      case "SET_SHOW_DELETE_MODAL":
-        return { ...state, showDeleteModal: action.value };
-      case "SET_SHOW_IMAGE_MODAL":
-        return { ...state, showImageModal: action.value };
+      case "SET_SHOW_MODAL":
+        return { ...state, showModal: action.value };
+      // case "SET_SHOW_ADD_MODAL":
+      //   return { ...state, showAddModal: action.value };
+      // case "SET_SHOW_DELETE_MODAL":
+      //   return { ...state, showDeleteModal: action.value };
+      // case "SET_SHOW_IMAGE_MODAL":
+      //   return { ...state, showImageModal: action.value };
       case "SET_QUERY":
         return { ...state, query: action.value };
       case "SET_RESET_SEARCH":
