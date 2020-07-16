@@ -5,7 +5,7 @@ import GalleryPage from "./pages/GalleryPage";
 import { store } from "./store/store";
 import { auth } from "./firebase";
 import "./css/app.scss";
-import ImagePage from "./pages/ImagePage";
+import PrivatePage from "./pages/PrivatePage";
 
 function App() {
   const globalState = useContext(store);
@@ -41,7 +41,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        {state.user && <GalleryPage path="/" />}
+        <PrivatePage as={GalleryPage} path="/" />
         {!state.user && <LoginPage path="/login" />}
       </div>
     </div>
