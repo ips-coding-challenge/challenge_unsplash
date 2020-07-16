@@ -62,7 +62,11 @@ function ModalImage({ image }) {
             />
           </div>
           <div className="form-group" style={{ flex: "1" }}>
-            <button className="btn btn-red" onClick={deleteImage}>
+            <button
+              className="btn btn-red"
+              style={{ alignSelf: "flex-end" }}
+              onClick={deleteImage}
+            >
               Delete
             </button>
           </div>

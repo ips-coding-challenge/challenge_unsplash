@@ -20,18 +20,26 @@ export default function ModalAdd() {
       setError("Name and Url are required");
       return;
     }
+    if (!url.startsWith("https://images.unsplash.com/")) {
+      setError("I only allow image from unsplash");
+      return;
+    }
     try {
       const newImage = await image.set({
         id: image.id,
         name,
         name_insensitive: name.toLowerCase(),
+        search_terms: name
+          .trim()
+          .split(" ")
+          .map((s) => s.toLowerCase()),
         url,
         created_at: firebase.firestore.FieldValue.serverTimestamp(),
       });
       console.log(`New image`, newImage);
-      dispatch({ type: "SET_SHOW_MODAL", value: { name: null, show: false } });
       setName("");
       setUrl("");
+      dispatch({ type: "SET_SHOW_MODAL", value: { name: null, show: false } });
     } catch (e) {
       console.log(`Error`, e);
       setError(e.message);

@@ -41,7 +41,7 @@ const GalleryPage = () => {
 
       if (state.query !== "") {
         results = await imagesRef
-          .where("name_insensitive", "==", state.query.toLowerCase())
+          .where("search_terms", "array-contains", state.query.toLowerCase())
           .orderBy("created_at", "desc")
           .get();
       } else {
