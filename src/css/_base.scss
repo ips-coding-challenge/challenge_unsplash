@@ -6,7 +6,7 @@ input {
   outline: none;
 
   &::placeholder {
-    @include text-m;
+    font-size: 1.4rem;
     color: $grey;
   }
 }
