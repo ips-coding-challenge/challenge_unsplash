@@ -15,7 +15,6 @@ function App() {
   useEffect(() => {
     const unsuscribe = auth.onAuthStateChanged(
       (user) => {
-        console.log(`User from app`, user);
         dispatch({ type: "SET_USER", value: user });
         dispatch({ type: "SET_LOADING", value: false });
         setInit(false);
@@ -36,6 +35,11 @@ function App() {
         <i className="zmdi zmdi-settings zmdi-hc-spin"></i>
       </div>
     );
+  }
+
+  if (process.env.REACT_APP_STAGE === "PROD") {
+    console.log(`Here`, process.env.REACT_APP_STAGE);
+    console.log = function no_console() {};
   }
 
   return (
