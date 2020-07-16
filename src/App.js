@@ -37,8 +37,8 @@ function App() {
     );
   }
 
+  // Lazy to eject webpack config. Is this Working ? :D
   if (process.env.REACT_APP_STAGE === "PROD") {
-    console.log(`Here`, process.env.REACT_APP_STAGE);
     console.log = function no_console() {};
   }
 
