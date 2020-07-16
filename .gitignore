@@ -22,9 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#config
-config.js
-
 #Firebase related stuff
 firestore.rules
 firestore.indexes.json

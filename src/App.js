@@ -41,6 +41,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
+        {console.log(`env`, process.env.REACT_APP_FIREBASE_API_KEY)}
         <PrivatePage as={GalleryPage} path="/" />
         {!state.user && <LoginPage path="/login" />}
       </div>

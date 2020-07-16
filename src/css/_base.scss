@@ -43,6 +43,11 @@ input {
   cursor: pointer;
   transition: background-color 0.2s;
 
+  &:disabled {
+    background-color: $grey !important;
+    cursor: initial;
+  }
+
   @media screen and (max-width: 400px) {
     padding: 12px 18px;
   }

@@ -86,7 +86,11 @@ export default function ModalAdd() {
       <button className="btn btn-light" onClick={close}>
         Cancel
       </button>
-      <button className="btn btn-green" onClick={addImage}>
+      <button
+        className="btn btn-green"
+        onClick={addImage}
+        disabled={name.length === 0 && url.length === 0}
+      >
         Submit
       </button>
     </>

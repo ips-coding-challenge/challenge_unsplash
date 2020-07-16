@@ -53,8 +53,10 @@ function ModalImage({ image }) {
       {showDeleteForm && (
         <>
           <div className="form-group" style={{ flex: "2" }}>
+            <label htmlFor="image">Write the image's name to delete it</label>
             <input
               type="text"
+              id="imageName"
               value={imageName}
               onChange={(e) => setImageName(e.target.value)}
               placeholder={image.name}
@@ -63,9 +65,10 @@ function ModalImage({ image }) {
           </div>
           <div className="form-group" style={{ flex: "1" }}>
             <button
-              className="btn btn-red"
+              className={`btn btn-red`}
               style={{ alignSelf: "flex-end" }}
               onClick={deleteImage}
+              disabled={imageName !== image.name}
             >
               Delete
             </button>
