@@ -1,4 +1,4 @@
-### You check the final result here
+### You can check the final result here
 
 https://challenge-unsplash.vercel.app/
 
